@@ -125,6 +125,8 @@ app.post("/api/users", async (req, res, next) => {
         // send status 201
         res.sendStatus(201);
       } catch (err) {
+        // set status code to 400
+        res.status(400);
         // call the global error handler
         next(err);
       }
@@ -212,6 +214,8 @@ app.post("/api/courses", authenticateUser, async (req, res, next) => {
       // send a 201 status
       res.sendStatus(201);
     } catch (err) {
+      // set status code to 400
+      res.status(400);
       // call global error handler
       next(err);
     }
@@ -255,6 +259,8 @@ app.put("/api/courses/:id", authenticateUser, async (req, res, next) => {
           // send a status 204
           res.status(204).end();
         } catch (err) {
+          // set status code to 400
+          res.status(400);
           // call the global error handler
           next(err);
         }
@@ -318,7 +324,7 @@ app.use((err, req, res, next) => {
     console.error(`Global error handler: ${JSON.stringify(err.stack)}`);
   }
   // check if the status is 200, if so set it to 500
-  if (res.status === 200 || res.status === 201) {
+  if (res.statusCode === 200 || res.statusCode === 201) {
     res.status(500);
   }
   // send the error message and the error as json
