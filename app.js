@@ -55,8 +55,8 @@ const authenticateUser = async (req, res, next) => {
       } else {
         // construct a new error
         const err = new Error(`No user found with the email ${email}`);
-        // set status to 403
-        res.status(403);
+        // set status to 401
+        res.status(401);
         // call global error handler
         next(err);
       }
