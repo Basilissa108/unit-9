@@ -331,7 +331,7 @@ app.use((err, req, res, next) => {
 // sync db instance
 (async () => {
   db.sequelize.sync()
-    .then(() => console.log("synced with db"))
+    .then(() => console.log("Successfully synced with database"))
     .catch(error => console.log(error));
 })();
 
