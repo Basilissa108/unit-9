@@ -318,7 +318,7 @@ app.use((err, req, res, next) => {
     console.error(`Global error handler: ${JSON.stringify(err.stack)}`);
   }
   // check if the status is 200, if so set it to 500
-  if (res.status === 200) {
+  if (res.status === 200 || res.status === 201) {
     res.status(500);
   }
   // send the error message and the error as json
