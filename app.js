@@ -123,7 +123,7 @@ app.post("/api/users", async (req, res, next) => {
         // set location header to "/"
         res.location("/");
         // send status 201
-        res.sendStatus(201);
+        res.status(201).end();
       } catch (err) {
         // set status code to 400
         res.status(400);
@@ -212,7 +212,7 @@ app.post("/api/courses", authenticateUser, async (req, res, next) => {
       // set location header to the URI of the course
       res.location(`/api/courses/${course.id}`);
       // send a 201 status
-      res.sendStatus(201);
+      res.status(201).end();
     } catch (err) {
       // set status code to 400
       res.status(400);
